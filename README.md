@@ -28,7 +28,7 @@ We provide a tutorial for xRAG in `tutorial.ipynb`. Check it out!
 ## Data
 - download [enwiki-dec2021](https://github.com/facebookresearch/atlas?tab=readme-ov-file#models) as pretraining data and corpus for retrieval
 - prepare instruction tuning data in `prepare_data.ipynb`
-- download [TriviaQA](https://github.com/wyu97/GenRead)
+- download [TriviaQA](https://drive.google.com/drive/folders/1lFFTklW_0HuR53hLpFdLClgfSAhXn_2f)
 - using [ColBERT-v2](https://github.com/stanford-futuredata/ColBERT.git) to conduct retrieval
 
 ## Training
