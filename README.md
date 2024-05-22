@@ -2,7 +2,10 @@
 
 Official repo for [xRAG: Extreme Context Compression for Retrieval-augmented Generation with One Token]()
 
-<img src="assets/framework.jpg" alt="xRAG" width="400">
+<div align=center>
+<img src="assets/framework.jpg" alt="xRAG">
+</div>
+
 
 ## Get Started
 Refer to `Dockerfile` for required packages
