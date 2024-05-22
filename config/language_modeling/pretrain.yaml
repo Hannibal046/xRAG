@@ -1,0 +1,38 @@
+## data
+train_file: data/pretrain/wikipedia/train.jsonl
+dev_file: data/pretrain/wikipedia/dev.jsonl
+max_seq_length: 336
+retrieval_context_length: 180
+preprocessing_num_workers: 32
+overwrite_cache: false
+max_train_samples: 2000000
+
+## model
+model_name_or_path: mistralai/mistral-7b-instruct-v0.2
+chat_format: mistral
+retriever_name_or_path: Salesforce/SFR-Embedding-Mistral
+
+## train
+task_type: pretrain
+workdir: .
+learning_rate: 6.0e-3
+lr_scheduler_type: linear
+warmup_ratio: 0.03
+weight_decay: 0.0
+num_train_epochs: 1
+use_flash_attn: true
+alpha_nll: 1.0
+clip_grad_norm: -1.0
+seed: 980406
+update_projector_only: true
+per_device_train_batch_size: 12
+gradient_accumulation_steps: 4 ## assume there are 8 GPUs, so the total batch size is 384
+
+
+## logging
+logging_steps: 1
+project_name: xrag_pretraining
+exp_name: wikipedia_pretrain
+# checkpointing_steps: "1000" ## string number or epoch
+
+

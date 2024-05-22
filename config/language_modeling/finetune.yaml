@@ -1,0 +1,38 @@
+## data
+train_file: data/instruction_tuning/processed/context_aware_instrution_tuning_data.jsonl
+max_seq_length: 1024  
+retrieval_context_length: 180
+preprocessing_num_workers: 32
+overwrite_cache: false
+use_rag_tuning: true
+
+## model
+model_name_or_path: pretrained_model/sfr-mistral-7b
+chat_format: mistral
+retriever_name_or_path: Salesforce/SFR-Embedding-Mistral
+
+## train
+task_type: finetune
+workdir: .
+learning_rate: 2.0e-5
+lr_scheduler_type: linear
+warmup_ratio: 0.03
+weight_decay: 0.0
+num_train_epochs: 1
+use_flash_attn: true
+alpha_nll: 1.0
+alpha_kl: 2.0
+kl_temperature: 1.0 
+clip_grad_norm: -1.0
+seed: 980406
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 2   ## assume there are 8 GPUs
+update_projector_only: true
+
+## logging
+logging_steps: 1
+project_name: xrag_finetune
+exp_name: test_finetune
+# checkpointing_steps: "1000" ## string number or epoch
+
+

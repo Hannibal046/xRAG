@@ -1,0 +1,45 @@
+## data
+query_data_path: data/msmarco/processed/queries.mmap
+pos_doc_data_path: data/msmarco/processed/pos_docs.mmap
+neg_doc_data_path: data/msmarco/processed/neg_docs.mmap
+num_samples: 39780811
+top1000_path: data/msmarco/top1000.dev
+max_test_samples: 500
+qrels_path: data/msmarco/qrels.dev.small.tsv
+
+
+## model
+model_type: polbert
+similarity_metric: l2
+dim: 128
+query_max_len: 32
+doc_max_len: 180
+## tested model parameters
+# mask_punctuation: true
+poly_m: 16
+pooling_type: attentive ## [attentive,1dconv]
+query_pooling: true
+use_mask_in_pooling: true
+poly_num_heads: 1
+poly_dropout: 0.1
+## for conv pooling
+# kernel_size: 16
+# stride: 16
+
+
+## training
+base_model: bert-base-uncased
+per_device_train_batch_size: 32
+weight_decay: 0.0
+lr: 3.0e-06
+max_train_steps: 400000
+seed: 12345
+gradient_accumulation_steps: 1
+val_check_interval: 20000
+fp16: true
+shuffle_train_set: false ## colbertv1 didn't shuffle
+torch_compile: true
+
+## logging
+project_name: colbert
+experiment_name: polbert_msmarco

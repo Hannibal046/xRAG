@@ -1,0 +1,30 @@
+## data
+query_data_path: data/msmarco/processed/queries.mmap
+pos_doc_data_path: data/msmarco/processed/pos_docs.mmap
+neg_doc_data_path: data/msmarco/processed/neg_docs.mmap
+num_samples: 39780811
+top1000_path: data/msmarco/top1000.dev
+max_test_samples: 500
+qrels_path: data/msmarco/qrels.dev.small.tsv
+
+## model
+model_type: dpr
+query_max_len: 32
+doc_max_len: 180
+
+
+## training
+base_model: bert-base-uncased
+per_device_train_batch_size: 32
+weight_decay: 0.0
+lr: 3.0e-06
+max_train_steps: 400000
+seed: 12345
+gradient_accumulation_steps: 1
+val_check_interval: 20000
+fp16: true
+shuffle_train_set: false ## colbertv1 didn't shuffle
+torch_compile: true
+
+## logging
+experiment_name: dpr_msmarco
