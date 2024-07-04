@@ -16,7 +16,6 @@ import pandas as pd
 
 ## own
 from src.model import (
-    RetrieverTokenizer,
     XMistralForCausalLM,
     XMixtralForCausalLM,
     SFR,
@@ -438,6 +437,8 @@ if __name__ == "__main__":
         assert len(_retrieval_embeds) == len(original_orders)
         for id,embeds in zip(original_orders,_retrieval_embeds):
             retrieval_embeds[id].append(embeds)
+
+        retriever = retriever.to("cpu")
 
 
     avg_prompt_length = tokenizer(prompts,return_length=True).length
